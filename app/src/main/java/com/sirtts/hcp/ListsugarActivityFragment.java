@@ -13,9 +13,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,7 +25,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ListtempVitalSignsActivityFragment extends Fragment implements  Response.Listener<JSONArray>,
+/**
+ * A placeholder fragment containing a simple view.
+ */
+public class ListsugarActivityFragment extends Fragment implements  Response.Listener<JSONArray>,
         Response.ErrorListener {
 
     private RequestQueue mQueue;
@@ -38,19 +38,19 @@ public class ListtempVitalSignsActivityFragment extends Fragment implements  Res
     ArrayList<String> time_ArrayList = new ArrayList<String>();
     ArrayList<String> val1_ArrayList = new ArrayList<String>();
     ProgressBar mProgressbar;
-    public static final String REQUEST_TAG = "ListtempVitalVolley";
+    public static final String REQUEST_TAG = "ListٍSugarVolley";
 
 
-    public ListtempVitalSignsActivityFragment() {
+    public ListsugarActivityFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_listtemp_vital_signs, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_listsugar, container, false);
 
-        listview = (ListView) rootView.findViewById(R.id.ListtempVitalSigns_listView);
-        mProgressbar = (ProgressBar) rootView.findViewById(R.id.ListtempVitalSigns_progressBar);
+        listview = (ListView) rootView.findViewById(R.id.ListsugarSigns_listView);
+        mProgressbar = (ProgressBar) rootView.findViewById(R.id.ListsugarSigns_progressBar);
 
 
         return rootView;
@@ -68,7 +68,7 @@ public class ListtempVitalSignsActivityFragment extends Fragment implements  Res
             mQueue = VolleyRequestQueue.getInstance(getContext().getApplicationContext())
                     .getRequestQueue();
             final JSONArrayRequest jsonRequest = new JSONArrayRequest(Request.Method
-                    .POST, getString(R.string.api_url_tempVital_list),
+                    .POST, getString(R.string.api_url_sugar_list),
                     sendData(sharedPre.getInt(getString(R.string.shared_userId),0)), this, this);
             jsonRequest.setTag(REQUEST_TAG);
             jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
@@ -96,9 +96,9 @@ public class ListtempVitalSignsActivityFragment extends Fragment implements  Res
             mProgressbar.setVisibility(View.INVISIBLE);
 
             for(int i=0;i<response.length();i++){
-                date_ArrayList.add(String.valueOf(response.optJSONObject(i).optString(getString(R.string.api_receive_json_vital_list_arr_date))));
-                time_ArrayList.add(String.valueOf(response.optJSONObject(i).optString(getString(R.string.api_receive_json_vital_list_arr_time))));
-                val1_ArrayList.add(String.valueOf(response.optJSONObject(i).optInt(getString(R.string.api_receive_json_vital_tempRate_list_arr_celsius)))
+                date_ArrayList.add(String.valueOf(response.optJSONObject(i).optString(getString(R.string.api_receive_json_sugar_date))));
+                time_ArrayList.add(String.valueOf(response.optJSONObject(i).optString(getString(R.string.api_receive_json_sugar_time))));
+                val1_ArrayList.add(String.valueOf(response.optJSONObject(i).optInt(getString(R.string.api_receive_json_sugar_mg)))
                 );
             }
 
@@ -122,7 +122,7 @@ public class ListtempVitalSignsActivityFragment extends Fragment implements  Res
 
     public JSONObject sendData(int userid){
         HashMap m = new HashMap();
-        m.put(getString(R.string.api_send_json_list_arr_userid),userid);
+        m.put(getString(R.string.api_send_json_vital_list_arr_userid),userid);
         Log.e(REQUEST_TAG, "sendData: "+(new JSONObject(m)).toString());
         return new JSONObject(m);
     }

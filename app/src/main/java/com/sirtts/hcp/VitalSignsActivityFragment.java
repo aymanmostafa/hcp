@@ -131,9 +131,9 @@ public class VitalSignsActivityFragment extends Fragment  implements View.OnClic
 
             if(bloodJsonarr.length()>0) {
                 JSONObject bloodJsonObj = bloodJsonarr.getJSONObject(0);
-                lastBlood.setText(bloodJsonObj.opt(
+                lastBlood.setText(bloodJsonObj.optInt(
                         getString(R.string.api_receive_json_vital_bloodPressure_systolic))
-                        + "/" + bloodJsonObj.opt(getString(R.string.api_receive_json_vital_bloodPressure_diastolic))
+                        + "/" + bloodJsonObj.optInt(getString(R.string.api_receive_json_vital_bloodPressure_diastolic))
                         + " on " + bloodJsonObj.optString(getString(R.string.api_receive_json_vital_date))
                 );
             }
@@ -141,7 +141,7 @@ public class VitalSignsActivityFragment extends Fragment  implements View.OnClic
 
             if(tempJsonarr.length()>0) {
                 JSONObject tempJsonObj = tempJsonarr.getJSONObject(0);
-                lastTemp.setText(tempJsonObj.opt(getString(R.string.api_receive_json_vital_bodyTemp_celsius)) +
+                lastTemp.setText(tempJsonObj.optDouble(getString(R.string.api_receive_json_vital_bodyTemp_celsius)) +
                         " °C on " + tempJsonObj.optString(getString(R.string.api_receive_json_vital_date))
                 );
             }
@@ -149,7 +149,7 @@ public class VitalSignsActivityFragment extends Fragment  implements View.OnClic
 
             if(heartJsonarr.length()>0) {
                 JSONObject heartJsonObj = heartJsonarr.getJSONObject(0);
-                lastHeart.setText(heartJsonObj.opt(getString(R.string.api_receive_json_vital_heartRate_bpm)) +
+                lastHeart.setText(heartJsonObj.optInt(getString(R.string.api_receive_json_vital_heartRate_bpm)) +
                         " bpm on " + heartJsonObj.optString(getString(R.string.api_receive_json_vital_date))
                 );
             }
@@ -157,7 +157,7 @@ public class VitalSignsActivityFragment extends Fragment  implements View.OnClic
 
             if(respJsonarr.length()>0) {
                 JSONObject respJsonObj = respJsonarr.getJSONObject(0);
-                lastResp.setText(respJsonObj.opt(getString(R.string.api_receive_json_vital_RespRate_bpm)) +
+                lastResp.setText(respJsonObj.optInt(getString(R.string.api_receive_json_vital_RespRate_bpm)) +
                         " Breath/Min. on " + respJsonObj.optString(getString(R.string.api_receive_json_vital_date))
                 );
             }

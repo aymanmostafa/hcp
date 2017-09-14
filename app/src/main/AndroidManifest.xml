@@ -65,6 +65,22 @@
         <activity
             android:name=".ListrespVitalSignsActivity"
             android:label="@string/title_activity_listresp_vital_signs"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PeriodActivity"
+            android:label="@string/title_activity_period"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListperiodActivity"
+            android:label="@string/title_activity_listperiod"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SugarActivity"
+            android:label="@string/title_activity_sugar"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListsugarActivity"
+            android:label="@string/title_activity_listsugar"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sirtts.hcp.PeriodActivityFragment"
+    tools:showIn="@layout/activity_period">
+
+    <TextView
+        android:id="@+id/period_endtvid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="161dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="123dp"
+        android:text="End"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/period_Viewbtnid" />
+
+    <TextView
+        android:id="@+id/period_endtimetvid"
+        android:layout_width="162dp"
+        android:layout_height="28dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="37dp"
+        android:hint="Time"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/period_starttimetvid" />
+
+    <TextView
+        android:id="@+id/period_enddatetvid"
+        android:layout_width="166dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="37dp"
+        android:hint="Date"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/period_startdatetvid" />
+
+    <TextView
+        android:id="@+id/period_textView2"
+        android:layout_width="366dp"
+        android:layout_height="170dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="28dp"
+        android:text="Menstrual cycle\nThe menstrual cycle is the regular natural change that occurs in the female reproductive system (specifically the uterus and ovaries) that makes pregnancy possible. The cycle is required for the production of ovocytes, and for the preparation of the uterus for pregnancy. Up to 80% of women report having some symptoms during the one to two weeks prior to menstruation."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/period_Viewbtnid"
+        android:layout_width="329dp"
+        android:layout_height="47dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="View Your Past Records"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/period_textView2"
+        tools:layout_editor_absoluteX="-79dp" />
+
+    <TextView
+        android:id="@+id/period_startdatetvid"
+        android:layout_width="166dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="29dp"
+        android:hint="Date"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/period_Viewbtnid" />
+
+    <TextView
+        android:id="@+id/period_starttimetvid"
+        android:layout_width="162dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="49dp"
+        android:layout_marginTop="29dp"
+        android:hint="Time"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/period_startdatetvid"
+        app:layout_constraintTop_toBottomOf="@+id/period_Viewbtnid" />
+
+    <Button
+        android:id="@+id/period_savebtnid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="Save"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/period_progressBar"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.813"
+        android:layout_marginTop="158dp"
+        app:layout_constraintTop_toBottomOf="@+id/period_Viewbtnid" />
+
+    <ProgressBar
+        android:id="@+id/period_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="70dp"
+        android:layout_marginTop="36dp"
+        android:visibility="invisible"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/period_endtimetvid" />
+
+    <TextView
+        android:id="@+id/period_error"
+        android:layout_width="157dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/period_savebtnid" />
+
+    <TextView
+        android:id="@+id/period_starttvid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="161dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="57dp"
+        android:text="Start"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/period_Viewbtnid" />
+
+</android.support.constraint.ConstraintLayout>

@@ -10,6 +10,17 @@
     <string name="api_url_login">http://hcp.cloudhub.io/login</string>
     <string name="api_url_signup">http://hcp.cloudhub.io/register</string>
     <string name="api_url_vital">http://hcp.cloudhub.io/vital_signs</string>
+    <string name="api_url_period">http://hcp.cloudhub.io/menstrual_cycle/set</string>
+    <string name="api_url_sugar">http://hcp.cloudhub.io/sugar_test/set</string>
+    <string name="api_url_sugar_list">http://hcp.cloudhub.io/sugar_test</string>
+
+
+
+
+
+    <string name="api_url_Period_list">http://hcp.cloudhub.io/menstrual_cycle</string>
+
+
     <string name="api_url_bloodVital">http://hcp.cloudhub.io/blood_pressure/set</string>
     <string name="api_url_heartVital">http://hcp.cloudhub.io/heart_rate/set</string>
     <string name="api_url_tempVital">http://hcp.cloudhub.io/body_temperature/set</string>
@@ -70,6 +81,30 @@
 
 
 
+    <string name="api_send_json_sugar_userId">userid</string>
+
+    <string name="api_send_json_sugar_date">date</string>
+    <string name="api_send_json_sugar_time">time</string>
+    <string name="api_send_json_sugar_mg">test result</string>
+
+    <string name="api_receive_json_sugar_date">date</string>
+    <string name="api_receive_json_sugar_time">time</string>
+    <string name="api_receive_json_sugar_mg">test result</string>
+
+
+
+    <string name="api_send_json_list_arr_userid">userid</string>
+
+
+    <string name="api_send_json_period_userId">userid</string>
+    <string name="api_send_json_period_startdate">start date</string>
+    <string name="api_send_json_period_starttime">start time</string>
+    <string name="api_send_json_period_enddate">end date</string>
+    <string name="api_send_json_period_endtime">end time</string>
+
+
+
+
 
 
 
@@ -83,9 +118,6 @@
     <string name="api_receive_json_vital_RespRate_list_arr_bpm">bpm</string>
 
 
-
-
-
     <string name="title_activity_blood_vital_signs">BloodVitalSignsActivity</string>
     <string name="title_activity_temp_vital_signs">TempVitalSignsActivity</string>
     <string name="title_activity_heart_vital_signs">HeartVitalSignsActivity</string>
@@ -94,5 +126,9 @@
     <string name="title_activity_listtemp_vital_signs">ListtempVitalSignsActivity</string>
     <string name="title_activity_listheart_vital_signs">ListheartVitalSignsActivity</string>
     <string name="title_activity_listresp_vital_signs">ListrespVitalSignsActivity</string>
+    <string name="title_activity_period">PeriodActivity</string>
+    <string name="title_activity_listperiod">ListperiodActivity</string>
+    <string name="title_activity_sugar">SugarActivity</string>
+    <string name="title_activity_listsugar">ListsugarActivity</string>
 
 </resources>

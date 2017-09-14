@@ -13,9 +13,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,32 +22,39 @@ import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
-public class ListtempVitalSignsActivityFragment extends Fragment implements  Response.Listener<JSONArray>,
+/**
+ * A placeholder fragment containing a simple view.
+ */
+public class ListperiodActivityFragment extends Fragment implements  Response.Listener<JSONArray>,
         Response.ErrorListener {
 
     private RequestQueue mQueue;
     ListView listview;
     VitalListAdapter adp;
-    ArrayList<String> date_ArrayList = new ArrayList<String>();
-    ArrayList<String> time_ArrayList = new ArrayList<String>();
-    ArrayList<String> val1_ArrayList = new ArrayList<String>();
+    ArrayList<String> start_ArrayList = new ArrayList<String>();
+    ArrayList<String> end_ArrayList = new ArrayList<String>();
+    ArrayList<String> duration_ArrayList = new ArrayList<String>();
     ProgressBar mProgressbar;
-    public static final String REQUEST_TAG = "ListtempVitalVolley";
+    public static final String REQUEST_TAG = "ListPeriodVolley";
 
 
-    public ListtempVitalSignsActivityFragment() {
+    public ListperiodActivityFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_listtemp_vital_signs, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_listperiod, container, false);
 
-        listview = (ListView) rootView.findViewById(R.id.ListtempVitalSigns_listView);
-        mProgressbar = (ProgressBar) rootView.findViewById(R.id.ListtempVitalSigns_progressBar);
+        listview = (ListView) rootView.findViewById(R.id.ListPeriod_listView);
+        mProgressbar = (ProgressBar) rootView.findViewById(R.id.ListPeriod_progressBar);
 
 
         return rootView;
@@ -64,11 +68,10 @@ public class ListtempVitalSignsActivityFragment extends Fragment implements  Res
     public  void onResume(){
         if (isNetworkAvailable(getContext())) {
             SharedPreferences sharedPre = getActivity().getSharedPreferences(getString(R.string.shared_isUserLoged), Context.MODE_PRIVATE);
-
             mQueue = VolleyRequestQueue.getInstance(getContext().getApplicationContext())
                     .getRequestQueue();
             final JSONArrayRequest jsonRequest = new JSONArrayRequest(Request.Method
-                    .POST, getString(R.string.api_url_tempVital_list),
+                    .POST, getString(R.string.api_url_Period_list),
                     sendData(sharedPre.getInt(getString(R.string.shared_userId),0)), this, this);
             jsonRequest.setTag(REQUEST_TAG);
             jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
@@ -93,16 +96,22 @@ public class ListtempVitalSignsActivityFragment extends Fragment implements  Res
     @Override
     public void onResponse(JSONArray response) {
         try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
             mProgressbar.setVisibility(View.INVISIBLE);
 
             for(int i=0;i<response.length();i++){
-                date_ArrayList.add(String.valueOf(response.optJSONObject(i).optString(getString(R.string.api_receive_json_vital_list_arr_date))));
-                time_ArrayList.add(String.valueOf(response.optJSONObject(i).optString(getString(R.string.api_receive_json_vital_list_arr_time))));
-                val1_ArrayList.add(String.valueOf(response.optJSONObject(i).optInt(getString(R.string.api_receive_json_vital_tempRate_list_arr_celsius)))
-                );
+                start_ArrayList.add(String.valueOf(response.optJSONObject(i).optString(getString(R.string.api_send_json_period_startdate)))
+                     +"  "+   String.valueOf(response.optJSONObject(i).optString(getString(R.string.api_send_json_period_starttime))).substring(0,5));
+                end_ArrayList.add(String.valueOf(response.optJSONObject(i).optString(getString(R.string.api_send_json_period_enddate)))
+                        +"  "+   String.valueOf(response.optJSONObject(i).optString(getString(R.string.api_send_json_period_endtime))).substring(0,5));
+
+                duration_ArrayList.add(String.valueOf(TimeUnit.MILLISECONDS.toDays((dateFormat.parse(String.valueOf(response.optJSONObject(i).
+                        optString(getString(R.string.api_send_json_period_enddate))))).getTime() -
+                        (dateFormat.parse(String.valueOf(response.optJSONObject(i).optString(getString(R.string.api_send_json_period_startdate)))).getTime()))));
             }
 
-            adp = new VitalListAdapter(getContext(),date_ArrayList,time_ArrayList,val1_ArrayList);
+            adp = new VitalListAdapter(getContext(),duration_ArrayList,end_ArrayList,start_ArrayList);
 
             listview.setAdapter(adp);
 
